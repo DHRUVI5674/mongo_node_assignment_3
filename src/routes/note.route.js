@@ -10,7 +10,8 @@ const {
   getNotesById,
   UpdateById,
   UpdateFieldId,
-  deleteById
+  deleteById,
+  deleteMulti
 } = require('../controllers/note.controller.js');
 
 router.post('/', createNote);
@@ -20,5 +21,6 @@ router.get('/:id', getNotesById);
 router.put('/:id', UpdateById);
 router.patch('/:id', UpdateFieldId);
 router.delete('/:id', deleteById);
+router.delete('/multiple', deleteMulti);
 
 module.exports = router;
