@@ -18,11 +18,13 @@ const {
   sortPaginate,
   searchFilter,
   searchSortPaginate,
-  filterSortPaginate
+  filterSortPaginate,
+  queryNotes
 } = require("../controllers/note.controller");
 
 router.post("/", createNote);
 router.post("/bulk", multipleNotes);
+router.get("/query", queryNotes);
 
 
 router.get("/search", searchTitle);
