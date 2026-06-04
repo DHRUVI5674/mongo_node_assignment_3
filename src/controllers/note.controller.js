@@ -452,6 +452,31 @@ const searchSortPaginate = async (req, res) => {
   }
 };
 
+const filterSortPaginate = async (req, res) => {
+  try {
+    const {
+      category,
+      sortBy = "createdAt",
+      order = "desc",
+      page = 1,
+      limit = 5,
+    } = req.query;
+
+    const filter = {};
+
+    if (category) filter.category = category;
+
+    const notes = await Note.find(filter)
+      .sort({ [sortBy]: order === "asc" ? 1 : -1 })
+      .skip((page - 1) * limit)
+      .limit(Number(limit));
+
+    res.status(200).json(notes);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createNote: createNote,
   multipleNotes: multipleNotes,
@@ -468,5 +493,6 @@ module.exports = {
   filterPaginate: filterPaginate,
   sortPaginate:sortPaginate,
   searchFilter: searchFilter,
-  searchSortPaginate: searchSortPaginate
+  searchSortPaginate: searchSortPaginate,
+  filterSortPaginate: filterSortPaginate
 };
