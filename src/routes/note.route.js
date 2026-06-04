@@ -11,6 +11,7 @@ const {
   deleteById,
   deleteMulti,
   searchTitle,
+  searchContent
 } = require("../controllers/note.controller");
 
 router.post("/", createNote);
@@ -30,5 +31,7 @@ router.delete("/:id", deleteById);
 router.delete("/bulk", deleteMulti);
 
 router.get("/search", searchTitle);
+
+router.get("/search/content", searchContent);
 
 module.exports = router;
