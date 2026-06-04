@@ -13,32 +13,32 @@ const {
   searchTitle,
   searchContent,
   searchAll,
-  filterSort
+  filterSort,
+  filterPaginate,
 } = require("../controllers/note.controller");
 
-// POST routes
 router.post("/", createNote);
 router.post("/bulk", multipleNotes);
 
-// GET search routes (must come before /:id)
+
 router.get("/search", searchTitle);
 router.get("/search/content", searchContent);
 router.get("/search/all", searchAll);
 
-// GET routes
+
+router.get("/filter-sort", filterSort);
+router.get("/filter-paginate", filterPaginate);
+
+
 router.get("/", getAllNotes);
 router.get("/:id", getNotesById);
 
-// PUT route
-router.put("/:id", UpdateById);
 
-// PATCH route
+router.put("/:id", UpdateById);
 router.patch("/:id", UpdateFieldId);
 
-// DELETE routes
-router.delete("/:id", deleteById);
-router.delete("/bulk", deleteMulti);
 
-router.get("/filter-sort", filterSort);
+router.delete("/bulk", deleteMulti);
+router.delete("/:id", deleteById);
 
 module.exports = router;
