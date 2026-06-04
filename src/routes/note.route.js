@@ -13,6 +13,7 @@ const {
   searchTitle,
   searchContent,
   searchAll,
+  filterSort
 } = require("../controllers/note.controller");
 
 // POST routes
@@ -37,5 +38,7 @@ router.patch("/:id", UpdateFieldId);
 // DELETE routes
 router.delete("/:id", deleteById);
 router.delete("/bulk", deleteMulti);
+
+router.get("/filter-sort", filterSort);
 
 module.exports = router;
