@@ -16,7 +16,8 @@ const {
   filterSort,
   filterPaginate,
   sortPaginate,
-  searchFilter
+  searchFilter,
+  searchSortPaginate
 } = require("../controllers/note.controller");
 
 router.post("/", createNote);
@@ -32,6 +33,7 @@ router.get("/filter-sort", filterSort);
 router.get("/filter-paginate", filterPaginate);
 router.get("/sort-paginate", sortPaginate);
 router.get("/search-filter", searchFilter);
+router.get("/search-sort-paginate", searchSortPaginate);
 
 
 router.get("/", getAllNotes);
