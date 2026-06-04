@@ -1,7 +1,5 @@
-
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-console.log("note.route.js loaded");
 
 const {
   createNote,
@@ -11,16 +9,26 @@ const {
   UpdateById,
   UpdateFieldId,
   deleteById,
-  deleteMulti
-} = require('../controllers/note.controller.js');
+  deleteMulti,
+  searchTitle,
+} = require("../controllers/note.controller");
 
-router.post('/', createNote);
-router.post('/multiple', multipleNotes);
-router.get('/', getAllNotes);
-router.get('/:id', getNotesById);
-router.put('/:id', UpdateById);
-router.patch('/:id', UpdateFieldId);
-router.delete('/:id', deleteById);
-router.delete('/multiple', deleteMulti);
+router.post("/", createNote);
+
+router.post("//bulk", multipleNotes);
+
+router.get("/", getAllNotes);
+
+router.get("/:id", getNotesById);
+
+router.put("/:id", UpdateById);
+
+router.patch("/:id", UpdateFieldId);
+
+router.delete("/:id", deleteById);
+
+router.delete("/bulk", deleteMulti);
+
+router.get("/search", searchTitle);
 
 module.exports = router;
